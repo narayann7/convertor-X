@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:base32/base32.dart';
 
 class EncodeDecode {
   static const BASE64 = Base64Codec();
@@ -20,6 +21,24 @@ class EncodeDecode {
     for (int i = 1; i <= time!; i++) {
       var decode = BASE64.decode(str.toString());
       ans = utf8.decode(decode);
+      str = ans;
+    }
+    return ans;
+  }
+
+  static base32Encoder(String? str, int? time) {
+    var ans;
+    for (int i = 1; i <= time!; i++) {
+      ans = base32.encodeString(str.toString());
+      str = ans;
+    }
+    return ans;
+  }
+
+  static base32Decoder(String? str, int? time) {
+    var ans;
+    for (int i = 1; i <= time!; i++) {
+      ans = base32.decodeAsString(str.toString());
       str = ans;
     }
     return ans;

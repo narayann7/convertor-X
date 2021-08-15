@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_convert_it/models/all_constants.dart';
 import 'package:just_convert_it/view/screen/encoding_decoding/base64.dart';
+import 'package:just_convert_it/view/screen/root_screen.dart';
 
 Widget text(
     {String? content,
@@ -21,7 +22,10 @@ Widget drawerElement(BuildContext context)
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (c) => RootSc()));
+              },
               child: Container(
                 height: 40,
                 width: 80,
