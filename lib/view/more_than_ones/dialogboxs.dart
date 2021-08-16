@@ -4,6 +4,79 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:just_convert_it/models/all_constants.dart';
 import 'package:just_convert_it/view/more_than_ones/more_thyan_ones.dart';
 
+showUnit(BuildContext context) {
+  String send = "Length";
+  List<String> units = [
+    "Angle",
+    "Area",
+    "Digital data",
+    "Energy",
+    "Force",
+    "Fuel consumption",
+    "Length",
+    "Mass",
+    "Numeralsystems",
+    "Power",
+    "Pressure",
+    "Shoe size",
+    "Si prefixes",
+    "Speed",
+    "Temperature",
+    "Time",
+    "Torque",
+    "Volume"
+  ];
+
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          actions: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                height: 35,
+                width: 70,
+                child: Center(child: text(content: "close", c: b, size: 18)),
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: d6,
+                    ),
+                    borderRadius: BorderRadius.circular(5)),
+              ),
+            ),
+          ],
+          content: Container(
+            height: MediaQuery.of(context).size.height * 0.40,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(),
+            child: ListView.builder(
+              itemCount: units.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                    onTap: () {
+                      send = units[index];
+                    },
+                    child: text(content: units[index], c: b, size: 35));
+              },
+            ),
+          ),
+        );
+      });
+
+  return send;
+}
+// Padding(
+//           padding: const EdgeInsets.all(12.0),
+//           child: Container(
+//             height: MediaQuery.of(context).size.height * 0.20,
+//             width: MediaQuery.of(context).size.width,
+//             decoration: BoxDecoration(color: gold),
+//           ),
+//         );
+
 showData(BuildContext context, String? data) {
   AlertDialog alert = AlertDialog(
       contentTextStyle: TextStyle(fontSize: 18, color: w),
