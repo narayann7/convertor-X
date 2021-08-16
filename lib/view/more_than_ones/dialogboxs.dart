@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:just_convert_it/models/all_constants.dart';
 import 'package:just_convert_it/view/more_than_ones/more_thyan_ones.dart';
 
-showUnit(BuildContext context) {
+Future<String?> showUnit(BuildContext context) async {
   String send = "Length";
   List<String> units = [
     "Angle",
@@ -58,15 +58,18 @@ showUnit(BuildContext context) {
                 return GestureDetector(
                     onTap: () {
                       send = units[index];
+                      print(send);
+
+                      Navigator.pop(context);
                     },
                     child: text(content: units[index], c: b, size: 35));
               },
             ),
           ),
         );
-      });
-
-  return send;
+      }).then((value) {
+    return send;
+  });
 }
 // Padding(
 //           padding: const EdgeInsets.all(12.0),
