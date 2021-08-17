@@ -1,7 +1,7 @@
-
-import 'package:just_convert_it/models/units.dart';
+import 'package:just_convert_it/models/units/units.dart';
 
 void main(){
 
-  print( UnitsX.Units[4]);
+Function fun=UnitsX.convertDigitalData;
+  print( fun(1.0,0,14));
 }

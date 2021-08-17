@@ -86,20 +86,11 @@ class typeUnits {
     "liters",
     "imperial gallons",
     "us gallons",
-    "imperial pints",
-    "us  pints",
     "milliliters",
-    "tablespoons us",
-    "australian tablespoons",
-    "cups",
     "cubic centimeters",
     "cubic feet",
     "cubic inches",
     "cubic millimeters",
-    "imperial fluid ounces",
-    "us fluid ounces",
-    "imperial gill",
-    "us gill",
   ];
   static List<String> forceX = [
     "newton",
@@ -110,7 +101,6 @@ class typeUnits {
   ];
   static List<String> massX = [
     "grams",
-    "ettograms",
     "kilograms",
     "pounds",
     "ounces",
@@ -120,9 +110,6 @@ class typeUnits {
     "uma", //unified atomic mass unit
     "carats",
     "centigrams",
-    "pennyweights",
-    "troy ounces",
-    "stones",
   ];
   static List<String> powerX = [
     "watt",
@@ -130,7 +117,6 @@ class typeUnits {
     "kilowatt",
     "megawatt",
     "gigawatt",
-    "european horse power",
     'imperial horse power',
   ];
 
@@ -142,48 +128,7 @@ class typeUnits {
     "psi",
     'torr',
   ];
-  static List<String> shoeSizeX = [
-    "centimeters",
-    "inches",
-    "eu china",
-    "uk india child",
-    'uk india man',
-    "uk india woman",
-    'usa canada child',
-    "usa canada man",
-    "usa canada woman",
-    "japan",
-  ];
-  static List<String> siPrefixeX = [
-    "base",
-    "deca",
-    "hecto",
-    "kilo",
-    "mega",
-    "giga",
-    "tera",
-    "peta",
-    "exa",
-    "zetta",
-    "yotta",
-    "deci",
-    "centi",
-    "milli",
-    "micro",
-    "nano",
-    "pico",
-    "femto",
-    "atto",
-    "zepto",
-    "yocto",
-  ];
-  static List<String> speedX = [
-    "meters per second",
-    "kilometers per hour",
-    "miles per hour",
-    "knots",
-    "feets per second",
-  ];
+
   static List<String> timeX = [
     "seconds",
     "deciseconds",
@@ -196,10 +141,8 @@ class typeUnits {
     "days",
     "weeks",
     "years 365",
-    "lustrum",
     "decades",
     "centuries",
-    "millennium",
   ];
   static List<String> torqueX = [
     "newton meter",
