@@ -101,8 +101,8 @@ class _UnitConvertionState extends State<UnitConvertion> {
                 child: text(c: b, content: displayUnit, size: 30)),
             TextField(
               // enabled: false,
-          
-              readOnly:true,
+
+              readOnly: true,
 
               keyboardType: TextInputType.number,
               toolbarOptions: ToolbarOptions(
@@ -124,9 +124,8 @@ class _UnitConvertionState extends State<UnitConvertion> {
             ),
             GestureDetector(
               onTap: () {
-
                 setState(() {
-                  t1.text="0";
+                  t1.text = "0";
                 });
                 // UnitsX unitsX = UnitsX();
 
