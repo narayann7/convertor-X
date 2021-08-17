@@ -20,8 +20,6 @@ class UnitsX {
     "Mass",
     "Power",
     "Pressure",
-    "Shoe size",
-    "Speed",
     "Time",
     "Torque",
   ];
@@ -41,6 +39,7 @@ class UnitsX {
     typeUnits.timeX,
     typeUnits.torqueX,
   ];
+  
   static convertLength(double number, int from, int to) {
     var length = Length();
 

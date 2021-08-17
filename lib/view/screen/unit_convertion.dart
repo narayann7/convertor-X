@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:just_convert_it/models/all_constants.dart';
 import 'package:just_convert_it/models/units/units.dart';
 import 'package:just_convert_it/view/more_than_ones/more_thyan_ones.dart';
-import 'package:units_converter/units_converter.dart';
 
 //testing am command
 class UnitConvertion extends StatefulWidget {
@@ -15,26 +14,8 @@ class UnitConvertion extends StatefulWidget {
 class _UnitConvertionState extends State<UnitConvertion> {
   TextEditingController t1 = TextEditingController();
   TextEditingController t2 = TextEditingController();
-  String displayUnit = "Length";
-  List<String> units = [
-    "Length",
-    "Digital data",
-    "Angle",
-    "Area",
-    "Temperature",
-    "Energy",
-    "Volume",
-    "Force",
-    "Fuel consumption",
-    "Mass",
-    "Power",
-    "Pressure",
-    "Shoe size",
-    "Si prefixes",
-    "Speed",
-    "Time",
-    "Torque",
-  ];
+  String displayUnit = "Length", from = "meters", to = "centimeters";
+  int displayUnitIndex = 0, fromIndex = 0, toIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -47,100 +28,230 @@ class _UnitConvertionState extends State<UnitConvertion> {
         appBar: AppBar(
           backgroundColor: d6,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            GestureDetector(
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          actions: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Container(
-                                height: 35,
-                                width: 70,
-                                child: Center(
-                                    child:
-                                        text(content: "close", c: b, size: 18)),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: d6,
-                                    ),
-                                    borderRadius: BorderRadius.circular(5)),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            actions: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Container(
+                                  height: 35,
+                                  width: 70,
+                                  child: Center(
+                                      child: text(
+                                          content: "close", c: b, size: 18)),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: d6,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5)),
+                                ),
+                              ),
+                            ],
+                            content: Container(
+                              height: MediaQuery.of(context).size.height * 0.40,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(),
+                              child: ListView.builder(
+                                itemCount: UnitsX.unitList.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          displayUnit = UnitsX.unitList[index];
+                                          displayUnitIndex = index;
+                                        });
+                                        print(displayUnit);
+                                        Navigator.pop(context);
+                                      },
+                                      child: text(
+                                          content: UnitsX.unitList[index],
+                                          c: b,
+                                          size: 35));
+                                },
                               ),
                             ),
-                          ],
-                          content: Container(
-                            height: MediaQuery.of(context).size.height * 0.40,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(),
-                            child: ListView.builder(
-                              itemCount: units.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return GestureDetector(
+                          );
+                        });
+                  },
+                  child: text(c: b, content: displayUnit, size: 30)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                actions: [
+                                  GestureDetector(
                                     onTap: () {
-                                      setState(() {
-                                        displayUnit = units[index];
-                                      });
-                                      print(displayUnit);
                                       Navigator.pop(context);
                                     },
-                                    child: text(
-                                        content: units[index], c: b, size: 35));
-                              },
-                            ),
-                          ),
-                        );
-                      });
+                                    child: Container(
+                                      height: 35,
+                                      width: 70,
+                                      child: Center(
+                                          child: text(
+                                              content: "close",
+                                              c: b,
+                                              size: 18)),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: d6,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
+                                    ),
+                                  ),
+                                ],
+                                content: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.40,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(),
+                                  child: ListView.builder(
+                                    itemCount:
+                                        UnitsX.Units[displayUnitIndex].length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              from =
+                                                  UnitsX.Units[displayUnitIndex]
+                                                      [index];
+                                              fromIndex = index;
+                                            });
+                                            print(displayUnit);
+
+                                            Navigator.pop(context);
+                                          },
+                                          child: text(
+                                              content:
+                                                  UnitsX.Units[displayUnitIndex]
+                                                      [index],
+                                              c: b,
+                                              size: 35));
+                                    },
+                                  ),
+                                ),
+                              );
+                            });
+                      },
+                      child: text(c: b, content: from, size: 20)),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: TextField(
+                      controller: t1,
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                actions: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Container(
+                                      height: 35,
+                                      width: 70,
+                                      child: Center(
+                                          child: text(
+                                              content: "close",
+                                              c: b,
+                                              size: 18)),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: d6,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
+                                    ),
+                                  ),
+                                ],
+                                content: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.40,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(),
+                                  child: ListView.builder(
+                                    itemCount:
+                                        UnitsX.Units[displayUnitIndex].length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              to =
+                                                  UnitsX.Units[displayUnitIndex]
+                                                      [index];
+                                              toIndex = index;
+                                            });
+                                            print(displayUnit);
+
+                                            Navigator.pop(context);
+                                          },
+                                          child: text(
+                                              content:
+                                                  UnitsX.Units[displayUnitIndex]
+                                                      [index],
+                                              c: b,
+                                              size: 35));
+                                    },
+                                  ),
+                                ),
+                              );
+                            });
+                      },
+                      child: text(c: b, content: to, size: 20)),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: TextField(
+                      controller: t2,
+                    ),
+                  )
+                ],
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    t1.text = "0";
+                  });
+                  // UnitsX unitsX = UnitsX();
+
+                  // var x = UnitsX.unitClass[0];
+                  // print(LengthX.convertLength(1, 1, 2));
                 },
-                child: text(c: b, content: displayUnit, size: 30)),
-            TextField(
-              // enabled: false,
-
-              readOnly: true,
-
-              keyboardType: TextInputType.number,
-              toolbarOptions: ToolbarOptions(
-                copy: true,
-                cut: true,
-                selectAll: true,
-              ),
-              controller: t1,
-              onChanged: (s) {
-                // setState(() {
-                //   var x = LengthX.convertLength(double.parse(s), 1, 2);
-                //   t2.text = x.toString();
-                // });
-              },
-            ),
-            TextField(
-              controller: t2,
-              enabled: false,
-            ),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  t1.text = "0";
-                });
-                // UnitsX unitsX = UnitsX();
-
-                // var x = UnitsX.unitClass[0];
-                // print(LengthX.convertLength(1, 1, 2));
-              },
-              child: Container(
-                height: 40,
-                width: 80,
-                decoration: BoxDecoration(
-                    color: d6, borderRadius: BorderRadius.circular(30)),
-                child: Center(child: text(content: "click", c: w, size: 18)),
-              ),
-            )
-          ],
+                child: Container(
+                  height: 40,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      color: d6, borderRadius: BorderRadius.circular(30)),
+                  child: Center(child: text(content: "click", c: w, size: 18)),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
