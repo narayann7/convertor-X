@@ -7,24 +7,23 @@ import 'package:just_convert_it/view/more_than_ones/more_thyan_ones.dart';
 Future<String?> showUnit(BuildContext context) async {
   String send = "Length";
   List<String> units = [
+       "Length",
+    "Digital data",
     "Angle",
     "Area",
-    "Digital data",
+    "Temperature",
     "Energy",
+    "Volume",
     "Force",
     "Fuel consumption",
-    "Length",
     "Mass",
-    "Numeralsystems",
     "Power",
     "Pressure",
     "Shoe size",
     "Si prefixes",
     "Speed",
-    "Temperature",
     "Time",
     "Torque",
-    "Volume"
   ];
 
   showDialog(

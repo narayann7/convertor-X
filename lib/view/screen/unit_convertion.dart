@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:just_convert_it/models/all_constants.dart';
+import 'package:just_convert_it/models/units.dart';
 import 'package:just_convert_it/view/more_than_ones/more_thyan_ones.dart';
+import 'package:units_converter/units_converter.dart';
+
 //testing am command
 class UnitConvertion extends StatefulWidget {
   UnitConvertion({Key? key}) : super(key: key);
@@ -11,27 +14,26 @@ class UnitConvertion extends StatefulWidget {
 
 class _UnitConvertionState extends State<UnitConvertion> {
   TextEditingController t1 = TextEditingController();
+  TextEditingController t2 = TextEditingController();
   String displayUnit = "Length";
-  String displayUnit2 = "Length";
   List<String> units = [
+    "Length",
+    "Digital data",
     "Angle",
     "Area",
-    "Digital data",
+    "Temperature",
     "Energy",
+    "Volume",
     "Force",
     "Fuel consumption",
-    "Length",
     "Mass",
-    "Numeralsystems",
     "Power",
     "Pressure",
     "Shoe size",
     "Si prefixes",
     "Speed",
-    "Temperature",
     "Time",
     "Torque",
-    "Volume"
   ];
 
   @override
@@ -97,17 +99,39 @@ class _UnitConvertionState extends State<UnitConvertion> {
                       });
                 },
                 child: text(c: b, content: displayUnit, size: 30)),
-            Row(
-              children: [],
+            TextField(
+              // enabled: false,
+          
+              readOnly:true,
+
+              keyboardType: TextInputType.number,
+              toolbarOptions: ToolbarOptions(
+                copy: true,
+                cut: true,
+                selectAll: true,
+              ),
+              controller: t1,
+              onChanged: (s) {
+                // setState(() {
+                //   var x = LengthX.convertLength(double.parse(s), 1, 2);
+                //   t2.text = x.toString();
+                // });
+              },
+            ),
+            TextField(
+              controller: t2,
+              enabled: false,
             ),
             GestureDetector(
               onTap: () {
-                // int len = 1;
-                // String c = "inches";
-                // var length = Length();
 
-                // length.convert(LENGTH.feet, 1);
-                // print(length.centimeters.value);
+                setState(() {
+                  t1.text="0";
+                });
+                // UnitsX unitsX = UnitsX();
+
+                // var x = UnitsX.unitClass[0];
+                // print(LengthX.convertLength(1, 1, 2));
               },
               child: Container(
                 height: 40,
