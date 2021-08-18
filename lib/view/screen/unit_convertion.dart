@@ -154,6 +154,16 @@ class _UnitConvertionState extends State<UnitConvertion> {
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: TextField(
                       controller: t1,
+                      onChanged: (text) {
+                        Function convertFunction =
+                            UnitsX.setFunction(displayUnitIndex);
+
+                        setState(() {
+                          var value = convertFunction(
+                              double.parse(text), fromIndex, toIndex);
+                          t2.text = value.toString();
+                        });
+                      },
                     ),
                   )
                 ],
@@ -228,6 +238,7 @@ class _UnitConvertionState extends State<UnitConvertion> {
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: TextField(
                       controller: t2,
+                      enabled: false,
                     ),
                   )
                 ],

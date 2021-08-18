@@ -8,6 +8,63 @@ import 'package:units_converter/Temperature.dart';
 import 'package:units_converter/units_converter.dart';
 
 class UnitsX {
+  static setFunction(int index) {
+    Function convert;
+
+    if (index == 0) {
+      convert = convertLength;
+      return convert;
+    }
+    if (index == 1) {
+      convert = convertDigitalData;
+      return convert;
+    }
+    if (index == 2) {
+      convert = convertAngle;
+      return convert;
+    }
+    if (index == 3) {
+      convert = convertArea;
+      return convert;
+    }
+    if (index == 4) {
+      convert = convertTemp;
+      return convert;
+    }
+    if (index == 5) {
+      convert = convertEnergy;
+      return convert;
+    }
+    if (index == 6) {
+      convert = convertVolume;
+      return convert;
+    }
+    if (index == 7) {
+      convert = convertForce;
+      return convert;
+    }
+    if (index == 8) {
+      convert = convertMass;
+      return convert;
+    }
+    if (index == 9) {
+      convert = convertPower;
+      return convert;
+    }
+    if (index == 10) {
+      convert = convertPressure;
+      return convert;
+    }
+    if (index == 11) {
+      convert = convertTime;
+      return convert;
+    }
+    if (index == 12) {
+      convert = convertTorque;
+      return convert;
+    }
+  }
+
   static List<String> unitList = [
     "Length",
     "Digital data",
@@ -39,7 +96,7 @@ class UnitsX {
     typeUnits.timeX,
     typeUnits.torqueX,
   ];
-  
+
   static convertLength(double number, int from, int to) {
     var length = Length();
 

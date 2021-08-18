@@ -1,7 +1,7 @@
 import 'package:just_convert_it/models/units/units.dart';
 
-void main(){
+void main() {
+  Function convertFunction = UnitsX.setFunction(0);
 
-Function fun=UnitsX.convertDigitalData;
-  print( fun(1.0,0,14));
+  print(convertFunction(1.0,1,1));
 }
