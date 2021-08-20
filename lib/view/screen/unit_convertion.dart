@@ -24,13 +24,14 @@ class _UnitConvertionState extends State<UnitConvertion> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         drawer: Drawer(child: drawerElement(context)),
         appBar: AppBar(
           backgroundColor: d6,
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
                   onTap: () {
@@ -159,9 +160,12 @@ class _UnitConvertionState extends State<UnitConvertion> {
                             UnitsX.setFunction(displayUnitIndex);
 
                         setState(() {
-                          var value = convertFunction(
-                              double.parse(text), fromIndex, toIndex);
-                          t2.text = value.toString();
+                          if (!text.isEmpty) {
+                            var value = convertFunction(
+                                double.parse(text), fromIndex, toIndex);
+                            t2.text = value.toString();
+                          } else
+                            t2.text = "";
                         });
                       },
                     ),
@@ -243,24 +247,6 @@ class _UnitConvertionState extends State<UnitConvertion> {
                   )
                 ],
               ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    t1.text = "0";
-                  });
-                  // UnitsX unitsX = UnitsX();
-
-                  // var x = UnitsX.unitClass[0];
-                  // print(LengthX.convertLength(1, 1, 2));
-                },
-                child: Container(
-                  height: 40,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      color: d6, borderRadius: BorderRadius.circular(30)),
-                  child: Center(child: text(content: "click", c: w, size: 18)),
-                ),
-              )
             ],
           ),
         ),
